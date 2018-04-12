@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     2018-04-12 12:12:09                          */
+/* Created on:     2018-04-12 14:15:03                          */
 /*==============================================================*/
 
 
@@ -20,13 +20,6 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('Target') and o.name = 'FK_TARGET_RELATIONS_TVSTATIS')
-alter table Target
-   drop constraint FK_TARGET_RELATIONS_TVSTATIS
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('TvStatisticsFacts') and o.name = 'FK_TVSTATIS_RELATIONS_PROGRAMM')
 alter table TvStatisticsFacts
    drop constraint FK_TVSTATIS_RELATIONS_PROGRAMM
@@ -37,6 +30,13 @@ if exists (select 1
    where r.fkeyid = object_id('TvStatisticsFacts') and o.name = 'FK_TVSTATIS_RELATIONS_DATE')
 alter table TvStatisticsFacts
    drop constraint FK_TVSTATIS_RELATIONS_DATE
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('TvStatisticsFacts') and o.name = 'FK_TVSTATIS_RELATIONS_DIC_GROU')
+alter table TvStatisticsFacts
+   drop constraint FK_TVSTATIS_RELATIONS_DIC_GROU
 go
 
 if exists (select 1
@@ -64,6 +64,13 @@ go
 
 if exists (select 1
             from  sysobjects
+           where  id = object_id('DIC_GROUP')
+            and   type = 'U')
+   drop table DIC_GROUP
+go
+
+if exists (select 1
+            from  sysobjects
            where  id = object_id('Date')
             and   type = 'U')
    drop table Date
@@ -87,18 +94,11 @@ go
 
 if exists (select 1
             from  sysindexes
-           where  id    = object_id('Target')
-            and   name  = 'Relationship_6_FK'
+           where  id    = object_id('TvStatisticsFacts')
+            and   name  = 'Relationship_5_FK'
             and   indid > 0
             and   indid < 255)
-   drop index Target.Relationship_6_FK
-go
-
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('Target')
-            and   type = 'U')
-   drop table Target
+   drop index TvStatisticsFacts.Relationship_5_FK
 go
 
 if exists (select 1
@@ -156,6 +156,16 @@ CategoryID ASC
 go
 
 /*==============================================================*/
+/* Table: DIC_GROUP                                             */
+/*==============================================================*/
+create table DIC_GROUP (
+   ID                   int                  not null,
+   Description          text                 null,
+   constraint PK_DIC_GROUP primary key nonclustered (ID)
+)
+go
+
+/*==============================================================*/
 /* Table: Date                                                  */
 /*==============================================================*/
 create table Date (
@@ -177,6 +187,7 @@ create table Programme (
    Description          text                 null,
    "2nd Description"    text                 null,
    Duration             datetime             null,
+   StartTime            datetime             null,
    constraint PK_PROGRAMME primary key nonclustered (ProgrammeID)
 )
 go
@@ -190,39 +201,18 @@ ChannelID ASC
 go
 
 /*==============================================================*/
-/* Table: Target                                                */
-/*==============================================================*/
-create table Target (
-   TargetID             int                  not null,
-   TvStatisticID        int                  null,
-   TargetVariable       text                 null,
-   TotalIndividuals     int                  null,
-   Subgroup             int                  null,
-   "A16-49"             float                null,
-   "M16-49"             float                null,
-   "A4-15"              float                null,
-   "A4-9"               float                null,
-   constraint PK_TARGET primary key nonclustered (TargetID)
-)
-go
-
-/*==============================================================*/
-/* Index: Relationship_6_FK                                     */
-/*==============================================================*/
-create index Relationship_6_FK on Target (
-TvStatisticID ASC
-)
-go
-
-/*==============================================================*/
 /* Table: TvStatisticsFacts                                     */
 /*==============================================================*/
 create table TvStatisticsFacts (
    TvStatisticID        int                  not null,
    ProgrammeID          int                  null,
    DateID               int                  null,
-   StartTime            datetime             null,
-   Duration             datetime             null,
+   ID                   int                  null,
+   AMR                  int                  null,
+   "AMR%"               int                  null,
+   "SHR%"               int                  null,
+   "RCH%"               int                  null,
+   RCH                  int                  null,
    constraint PK_TVSTATISTICSFACTS primary key nonclustered (TvStatisticID)
 )
 go
@@ -243,6 +233,14 @@ DateID ASC
 )
 go
 
+/*==============================================================*/
+/* Index: Relationship_5_FK                                     */
+/*==============================================================*/
+create index Relationship_5_FK on TvStatisticsFacts (
+ID ASC
+)
+go
+
 alter table Channel
    add constraint FK_CHANNEL_RELATIONS_CATEGORY foreign key (CategoryID)
       references Category (CategoryID)
@@ -253,11 +251,6 @@ alter table Programme
       references Channel (ChannelID)
 go
 
-alter table Target
-   add constraint FK_TARGET_RELATIONS_TVSTATIS foreign key (TvStatisticID)
-      references TvStatisticsFacts (TvStatisticID)
-go
-
 alter table TvStatisticsFacts
    add constraint FK_TVSTATIS_RELATIONS_PROGRAMM foreign key (ProgrammeID)
       references Programme (ProgrammeID)
@@ -266,5 +259,10 @@ go
 alter table TvStatisticsFacts
    add constraint FK_TVSTATIS_RELATIONS_DATE foreign key (DateID)
       references Date (DateID)
+go
+
+alter table TvStatisticsFacts
+   add constraint FK_TVSTATIS_RELATIONS_DIC_GROU foreign key (ID)
+      references DIC_GROUP (ID)
 go
 
