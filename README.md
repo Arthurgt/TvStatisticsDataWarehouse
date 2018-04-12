@@ -1,1 +1,7 @@
-# Data-warehouse
+# Data-warehouse Project
+
+## Babkiewicz Artur
+
+## Demidziuk Jakub 
+
+## Chodola Patryk
