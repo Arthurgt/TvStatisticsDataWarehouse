@@ -4,4 +4,4 @@
 
 ## Demidziuk Jakub 
 
-## Chodo³a Patryk
+## Chodola Patryk
