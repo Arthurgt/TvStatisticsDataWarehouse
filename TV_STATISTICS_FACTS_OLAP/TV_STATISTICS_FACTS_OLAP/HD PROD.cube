@@ -1,0 +1,272 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="8b61718d-f7f8-4730-878c-a75e7b7a44e5" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>HD PROD</ID>
+  <Name>HD PROD</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Dimensions>
+    <Dimension dwd:design-time-name="3f9a6bf9-4f28-430b-8edc-267c1cc656e4">
+      <ID>PROGRAMME</ID>
+      <Name>PROGRAMME</Name>
+      <DimensionID>PROGRAMME</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="8399c87f-ae1c-4544-af34-b21542cac9aa">
+          <AttributeID>PROGRAMME ID</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="96d6b67e-489d-4f00-bdeb-51fdf1fe6f22">
+          <AttributeID>DESCRIPTION</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="e469cb42-83bb-435d-9266-5d384f9d29f1">
+          <AttributeID>SECOND DESCRIPTION</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="c77704ce-4b83-4927-979c-a325504a8295">
+          <AttributeID>START TIME</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="a502aa08-3a4a-466c-a590-30a7b2bfbb59">
+          <AttributeID>CHANNEL ID</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="570f9a62-a901-4153-9003-44fc26a6cbd6">
+          <AttributeID>CHANNEL NAME</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="ba8f249a-842c-40fd-ae02-445bbdd06062">
+          <AttributeID>CATEGORY ID</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="eb8937e1-9944-4028-a296-264770fda43e">
+          <AttributeID>CATEGORY NAME</AttributeID>
+        </Attribute>
+      </Attributes>
+      <Hierarchies>
+        <Hierarchy dwd:design-time-name="85bb95ff-7541-454e-91d6-d253c0af90fc">
+          <HierarchyID>Hierarchy</HierarchyID>
+        </Hierarchy>
+      </Hierarchies>
+    </Dimension>
+    <Dimension dwd:design-time-name="7c381f34-e12d-4282-b675-60858b94d8eb">
+      <ID>DATE</ID>
+      <Name>DATE</Name>
+      <DimensionID>DATE</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="0a218293-5666-4b10-b06a-b0c5b6851b28">
+          <AttributeID>DATE ID</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="0e81b17c-897a-4dc3-b195-7d28488cc69f">
+          <AttributeID>YEAR</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="e37ec00a-c3ca-42b1-9f02-146640cfb4f5">
+          <AttributeID>MONTH</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="be68c2d7-b548-4064-96a6-b73161f851c9">
+          <AttributeID>DAY</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="2b67a9dc-3df9-4c5e-8bda-ba9314dc116b">
+          <AttributeID>DATE</AttributeID>
+        </Attribute>
+      </Attributes>
+      <Hierarchies>
+        <Hierarchy dwd:design-time-name="f9d7ad4f-fdab-41fe-a57a-82d2b9a43e83">
+          <HierarchyID>Hierarchy</HierarchyID>
+        </Hierarchy>
+      </Hierarchies>
+    </Dimension>
+    <Dimension dwd:design-time-name="4ccdf145-9762-4de0-b845-993ae1f08fe1">
+      <ID>DIC GROUP</ID>
+      <Name>DIC GROUP</Name>
+      <DimensionID>DIC GROUP</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="aac19c21-7ab7-4468-8924-5caaf8f6de5b">
+          <AttributeID>GROUP ID</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="494729c4-bd9e-4351-a570-b9f3924c4bb2">
+          <AttributeID>DESCRIPTION</AttributeID>
+        </Attribute>
+      </Attributes>
+      <Hierarchies>
+        <Hierarchy dwd:design-time-name="486c3331-454a-4767-8bab-0775fda0b7a3">
+          <HierarchyID>Hierarchy</HierarchyID>
+        </Hierarchy>
+      </Hierarchies>
+    </Dimension>
+  </Dimensions>
+  <MeasureGroups>
+    <MeasureGroup dwd:design-time-name="07d30ec6-625d-45ae-8976-e0d39a0a558b">
+      <ID>TV STATISTICS FACTS</ID>
+      <Name>TV STATISTICS FACTS</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Measures>
+        <Measure dwd:design-time-name="75d20801-ab92-4fec-ad3f-d5f83d701c07">
+          <ID>AMR</ID>
+          <Name>AMR</Name>
+          <Source dwd:design-time-name="94cc355a-d017-45e0-98a0-7d723d45c723">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="aefd3a6a-3524-4ce8-a754-bfaeaa857400">
+              <TableID>dbo_TV_STATISTICS_FACTS</TableID>
+              <ColumnID>AMR</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="9bfb4726-64a4-4b96-8602-47c507e2e2c6">
+          <ID>AMR - TV STATISTICS FACTS</ID>
+          <Name>AMR - TV STATISTICS FACTS</Name>
+          <Source dwd:design-time-name="427585db-3e17-4595-81f8-cc4c82b937bf">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="71fd1d8c-eaed-496f-adc1-58be259a631d">
+              <TableID>dbo_TV_STATISTICS_FACTS</TableID>
+              <ColumnID>AMR_x0025_</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="e97a7abe-325a-4656-b0e0-66f923a39073">
+          <ID>SHR</ID>
+          <Name>SHR</Name>
+          <Source dwd:design-time-name="5722d036-5689-4ffc-80d1-93c73156c851">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="d0aa7da6-7a9f-47dc-9f91-e5c996d5af0c">
+              <TableID>dbo_TV_STATISTICS_FACTS</TableID>
+              <ColumnID>SHR_x0025_</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="33347d1a-97a5-4577-be67-a742b117ceb2">
+          <ID>RCH</ID>
+          <Name>RCH</Name>
+          <Source dwd:design-time-name="faf7c422-efc9-4801-96b5-56ecae57b171">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="6ffc7017-297d-4fec-963c-0cd9c2ee56fc">
+              <TableID>dbo_TV_STATISTICS_FACTS</TableID>
+              <ColumnID>RCH_x0025_</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="2d5e1ee9-0321-4493-ba1d-151ab9ed1877">
+          <ID>RCH - TV STATISTICS FACTS</ID>
+          <Name>RCH - TV STATISTICS FACTS</Name>
+          <Source dwd:design-time-name="9c9efb4e-a775-4aa0-b121-dfe4023a6288">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="fad2f471-efad-4376-a3da-1bf8cfced675">
+              <TableID>dbo_TV_STATISTICS_FACTS</TableID>
+              <ColumnID>RCH</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="5bb5d816-1882-4eb6-9cbd-7e449ee46ddf">
+          <ID>TV STATISTICS FACTS Count</ID>
+          <Name>TV STATISTICS FACTS Count</Name>
+          <AggregateFunction>Count</AggregateFunction>
+          <Source dwd:design-time-name="240016e9-2738-429c-97a6-f32fe15561d7">
+            <DataType>Integer</DataType>
+            <DataSize>4</DataSize>
+            <Source xsi:type="RowBinding" dwd:design-time-name="46e1eb8c-6e10-49bd-abaf-97ca8ca61ce1">
+              <TableID>dbo_TV_STATISTICS_FACTS</TableID>
+            </Source>
+          </Source>
+        </Measure>
+      </Measures>
+      <StorageMode>Molap</StorageMode>
+      <ProcessingMode>Regular</ProcessingMode>
+      <Dimensions>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="c8539f03-f085-448a-961c-4e2b300d603f">
+          <CubeDimensionID>PROGRAMME</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="4b375e9f-3ac5-48b9-a387-02f507b1dd45">
+              <AttributeID>PROGRAMME ID</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="f9a01071-7761-45f6-88c8-c88979d17db7">
+                  <NullProcessing>UnknownMember</NullProcessing>
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="de792bf9-85ba-4051-9d71-8bbac12aee4d">
+                    <TableID>dbo_TV_STATISTICS_FACTS</TableID>
+                    <ColumnID>PROGRAMME_ID</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="571326b3-68be-42d2-ba13-709fc59db632">
+          <CubeDimensionID>DATE</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="29419735-4705-4cd2-9abd-5adeaa74f2f9">
+              <AttributeID>DATE ID</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="588010b9-d56d-4188-8033-f3d984dac5ee">
+                  <NullProcessing>UnknownMember</NullProcessing>
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="0017aedd-47a1-46b4-b60b-7fbe6f391cf4">
+                    <TableID>dbo_TV_STATISTICS_FACTS</TableID>
+                    <ColumnID>DATE_ID</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="e2c41549-6adb-49b1-90ac-7e758095d443">
+          <CubeDimensionID>DIC GROUP</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="8dcea764-da04-461c-8c5a-e365f02c7551">
+              <AttributeID>GROUP ID</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="1707cb81-2efb-4fc3-86e3-5de00d427718">
+                  <NullProcessing>UnknownMember</NullProcessing>
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="6d2c408e-cdb7-4e4e-a1f5-65c58bcadf07">
+                    <TableID>dbo_TV_STATISTICS_FACTS</TableID>
+                    <ColumnID>GROUP_ID</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+      </Dimensions>
+      <Partitions />
+    </MeasureGroup>
+  </MeasureGroups>
+  <Source dwd:design-time-name="bae7c93a-1b3b-4e7f-8a45-b1c70c6c70ce">
+    <DataSourceViewID>HD PROD</DataSourceViewID>
+  </Source>
+</Cube>
