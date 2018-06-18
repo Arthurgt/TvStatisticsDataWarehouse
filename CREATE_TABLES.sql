@@ -1,15 +1,16 @@
 use [HD_PROD]
-drop table if exists CATEGORY;
-
-drop table if exists "DATE";
-
-drop table if exists DIC_GROUP;
-
-drop table if exists CHANNEL;
+drop table if exists TV_STATISTICS_FACTS;
 
 drop table if exists PROGRAMME;
 
-drop table if exists TV_STATISTICS_FACTS;
+drop table if exists DIC_GROUP;
+
+drop table if exists DATE;
+
+drop table if exists CHANNEL;
+
+drop table if exists CATEGORY;
+
 
 /*==============================================================*/
 /* Table: CATEGORY                                              */
