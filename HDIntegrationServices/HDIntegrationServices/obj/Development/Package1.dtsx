@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/16/2018 3:42:46 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="KUBA"
+  DTS:CreatorName="KUBA\Jakub"
+  DTS:DTSID="{99D243DC-DEED-4D07-935B-405C94E231A8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1045"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{3ADEC512-B1F0-4CBF-AE85-B71DF835DA78}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CONNECTION2]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{3C853981-D982-4FD9-9019-1B737A7A1705}"
+      DTS:ObjectName="CONNECTION2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Integrated Security=SSPI;Connect Timeout=30;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E20A8059-40FE-4E0A-8F3A-E719EB8DEA9A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute CREATETABLES"
+      DTS:CreationName="Microsoft.DbMaintenanceTSQLExecuteTask"
+      DTS:Description="Execute T-SQL Statement Task"
+      DTS:DTSID="{60CA0757-C6B3-4C88-8B8F-5DACFB6BBFB6}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceTSQLExecuteTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute CREATETABLES"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3C853981-D982-4FD9-9019-1B737A7A1705}"
+          SQLTask:SqlStatementSource="use [HD_PROD]&#xA;drop table if exists TV_STATISTICS_FACTS;&#xA;&#xA;drop table if exists PROGRAMME;&#xA;&#xA;drop table if exists DIC_GROUP;&#xA;&#xA;drop table if exists DATE;&#xA;&#xA;drop table if exists CHANNEL;&#xA;&#xA;drop table if exists CATEGORY;&#xA;&#xA;&#xA;/*==============================================================*/&#xA;/* Table: CATEGORY                                              */&#xA;/*==============================================================*/&#xA;create table CATEGORY &#xA;(&#xA;   CATEGORY_ID           INTEGER IDENTITY               not null,&#xA;   CATEGORY_NAME         varchar(50)                    null,&#xA;   constraint PK_CATEGORY primary key clustered (CATEGORY_ID)&#xA;);&#xA;&#xA;/*==============================================================*/&#xA;/* Table: &quot;DATE&quot;                                                */&#xA;/*==============================================================*/&#xA;create table &quot;DATE&quot; &#xA;(&#xA;   DATE_ID            INTEGER IDENTITY               not null,&#xA;   YEAR               integer                        null,&#xA;   MONTH              integer                        null,&#xA;   DAY                integer                        null,&#xA;   DATE               date&#x9;&#x9;&#x9;     null,&#xA;   constraint PK_DATE primary key clustered (DATE_ID)&#xA;);&#xA;&#xA;/*==============================================================*/&#xA;/* Table: DIC_GROUP                                                */&#xA;/*==============================================================*/&#xA;create table DIC_GROUP &#xA;(&#xA;   GROUP_ID             INTEGER IDENTITY                     not null,&#xA;   DESCRIPTION        varchar(50)                            null,&#xA;   constraint PK_DIC_GROUP primary key clustered (GROUP_ID)&#xA;);&#xA;&#xA;/*==============================================================*/&#xA;/* Table: CHANNEL                                               */&#xA;/*==============================================================*/&#xA;create table CHANNEL &#xA;(&#xA;   CHANNEL_ID           INTEGER IDENTITY               not null,&#xA;   CATEGORY_ID          integer                            null,&#xA;   CHANNEL_NAME         varchar(50)                        null,&#xA;   constraint PK_CHANNEL primary key clustered (CHANNEL_ID)&#xA;);&#xA;&#xA;/*==============================================================*/&#xA;/* Table: PROGRAMME                                             */&#xA;/*==============================================================*/&#xA;create table PROGRAMME &#xA;(&#xA;   PROGRAMME_ID         INTEGER IDENTITY                        not null,&#xA;   CHANNEL_ID           integer                                 null,&#xA;   DESCRIPTION          varchar(100)                            null,&#xA;   SECOND_DESCRIPTION   varchar(100)                            null,&#xA;   DURATION &#x9;&#x9;&#x9;time                                    null,&#xA;   START_TIME           varchar(50)                                     null,&#xA;   constraint PK_PROGRAMME primary key clustered (PROGRAMME_ID)&#xA;);&#xA;&#xA;/*==============================================================*/&#xA;/* Table: TV_STATISTICS_FACTS                                           */&#xA;/*==============================================================*/&#xA;create table TV_STATISTICS_FACTS &#xA;(&#xA;   FACT_ID              INTEGER IDENTITY               not null,&#xA;   PROGRAMME_ID         integer                        null,&#xA;   DATE_ID              integer                        null,&#xA;   GROUP_ID             integer                        null,&#xA;   AMR                  integer                        null,&#xA;   [AMR%]               float                          null,&#xA;   [SHR%]               float                          null,&#xA;   [RCH%]               float                          null,&#xA;   [RCH]                float                          null,&#xA;   constraint PK_TV_STATISTICS_FACTS primary key clustered (FACT_ID)&#xA;);&#xA;&#xA;alter table TV_STATISTICS_FACTS&#xA;   add constraint FK_FACTS_TA_RELATIONS_DIC_GROUP foreign key (GROUP_ID)&#xA;      references DIC_GROUP (GROUP_ID);&#xA;&#xA;alter table TV_STATISTICS_FACTS&#xA;   add constraint FK_FACTS_TA_RELATIONS_PROGRAMM foreign key (PROGRAMME_ID)&#xA;      references PROGRAMME (PROGRAMME_ID);&#xA;&#xA;alter table TV_STATISTICS_FACTS&#xA;   add constraint FK_FACTS_TA_RELATIONS_DATE foreign key (DATE_ID)&#xA;      references &quot;DATE&quot; (DATE_ID);&#xA;&#x9;  &#xA;alter table PROGRAMME&#xA;   add constraint FK_FACTS_TA_RELATIONS_CHANNEL foreign key (CHANNEL_ID)&#xA;      references CHANNEL (CHANNEL_ID);&#xA;&#x9;  &#xA;alter table CHANNEL&#xA;   add constraint FK_FACTS_TA_RELATIONS_CATEGORY foreign key (CATEGORY_ID)&#xA;      references CATEGORY (CATEGORY_ID);&#xA;&#xA;"
+          SQLTask:ServerVersion="9"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute INSERTDATA"
+      DTS:CreationName="Microsoft.DbMaintenanceTSQLExecuteTask"
+      DTS:Description="Execute T-SQL Statement Task"
+      DTS:DTSID="{8C77059B-8685-4F46-87A5-68FEF538A70E}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceTSQLExecuteTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute INSERTDATA"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3C853981-D982-4FD9-9019-1B737A7A1705}"
+          SQLTask:SqlStatementSource="INSERT INTO [HD_PROD].[dbo].[DIC_GROUP] (DESCRIPTION)&#xA;SELECT Kod&#xA;FROM   [HD].[dbo].[target.groups-2]&#xA;&#xA;INSERT INTO [HD_PROD].[dbo].[CATEGORY] (CATEGORY_NAME)&#xA;SELECT DISTINCT Nazwa_Kategorii&#xA;FROM   [HD].[dbo].[kategorie]&#xA;&#xA;INSERT INTO [HD_PROD].[dbo].[CHANNEL] (CHANNEL_NAME,CATEGORY_ID)&#xA;SELECT Nazwa_programu,cat.CATEGORY_ID&#xA;FROM   [HD].[dbo].[kategorie] kat&#xA;JOIN [HD_PROD].[dbo].[CATEGORY] cat ON kat.Nazwa_kategorii=cat.CATEGORY_NAME&#xA;&#xA;INSERT INTO [HD_PROD].[dbo].[Date] (YEAR,MONTH,DAY,[Date])&#xA;SELECT DISTINCT convert(integer,DatePART(YEAR,[&quot;Date&quot;])),convert(integer,DatePART(DAY,[&quot;Date&quot;])),convert(integer,DatePART(MONTH,[&quot;Date&quot;])),Convert(Date,[&quot;Date&quot;],103)&#xA;FROM [HD].[dbo].[STAGE]&#xA;&#xA;&#xA;INSERT INTO [HD_PROD].[dbo].[PROGRAMME]&#xA;&#x9;  ([CHANNEL_ID]&#xA;      ,[Description]&#xA;      ,[SECOND_DESCRIPTION]&#xA;      ,[Duration]&#xA;      ,[START_TIME])&#xA;SELECT CHANNEL_ID,[&quot;Description&quot;],[&quot;2nd Description&quot;],CAST([&quot;Duration&quot;] AS TIME(0)) [&quot;Duration&quot;],[&quot;Start time&quot;]&#xA;FROM   [HD].[dbo].[STAGE] sam JOIN&#xA;[HD_PROD].[dbo].[CHANNEL] chan ON sam.[&quot;Channel&quot;]=chan.CHANNEL_NAME&#xA;GROUP BY [&quot;Start time&quot;],CHANNEL_ID,[&quot;Description&quot;],[&quot;2nd Description&quot;],[&quot;Duration&quot;]&#xA;&#xA;INSERT INTO [HD_PROD].[dbo].[TV_STATISTICS_FACTS] ([PROGRAMME_ID]&#xA;      ,[Date_ID]&#xA;      ,[GROUP_ID]&#xA;      ,[AMR]&#xA;      ,[AMR%]&#xA;      ,[SHR%]&#xA;      ,[RCH%]&#xA;      ,[RCH])&#xA;SELECT [PROGRAMME_ID]&#xA;      ,[Date_ID]&#xA;      ,[GROUP_ID]&#xA;      ,[AMR]&#xA;      ,[AMR %]&#xA;      ,[SHR %]&#xA;      ,[RCH %  [Not cons. - TH: 0min.]]]&#xA;      ,[RCH  [Not cons. - TH: 0min.]]]&#xA;FROM   [HD].[dbo].[PIVOT] hd &#xA;JOIN [HD_PROD].[dbo].[DIC_GROUP] dic ON dic.DESCRIPTION=hd.Target&#xA;JOIN [HD_PROD].[dbo].[CHANNEL] cha ON cha.CHANNEL_NAME=hd.[&quot;CHANNEL&quot;]&#xA;JOIN [HD_PROD].[dbo].[PROGRAMME] pro ON pro.DESCRIPTION=hd.[&quot;Description&quot;] AND pro.START_TIME=hd.[&quot;Start time&quot;] AND pro.DURATION=hd.[&quot;DURATION&quot;] AND pro.CHANNEL_ID=cha.channel_ID&#xA;JOIN [HD_PROD].[dbo].[Date] dat ON dat.YEAR=YEAR(hd.[&quot;Date&quot;]) AND dat.DAY=DAY(CONVERT(Date,hd.[&quot;Date&quot;],104)) AND dat.MONTH=MONTH(CONVERT(Date,hd.[&quot;Date&quot;],104))"
+          SQLTask:ServerVersion="9"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E2F0A608-2DDF-4EF4-9208-24490CA258B3}"
+      DTS:From="Package\Data Flow Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Execute CREATETABLES" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{932D76B0-2F3C-4B43-AFC7-A8A4FDB5E20B}"
+      DTS:From="Package\Execute CREATETABLES"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Execute INSERTDATA" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="194,84" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Execute CREATETABLES"
+          TopLeft="208,167" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="269.5,126">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35,41"
+              Start="0,0"
+              End="35,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="4,20.5" />
+                  <mssgle:LineSegment
+                    End="31,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31,20.5"
+                    Point2="35,20.5"
+                    Point3="35,24.5" />
+                  <mssgle:LineSegment
+                    End="35,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Execute INSERTDATA"
+          TopLeft="537,163" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="401,186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="136,0"
+              Start="0,0"
+              End="128.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="128.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

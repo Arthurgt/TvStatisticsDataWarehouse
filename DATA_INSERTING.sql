@@ -2,6 +2,9 @@ INSERT INTO [HD_PROD].[dbo].[DIC_GROUP] (DESCRIPTION)
 SELECT Kod
 FROM   [HD].[dbo].[target.groups-2]
 
+INSERT INTO [HD_PROD].[dbo].[DIC_GROUP] (DESCRIPTION)
+VALUES ('Total Individuals'), ('Podgrupa')
+
 INSERT INTO [HD_PROD].[dbo].[CATEGORY] (CATEGORY_NAME)
 SELECT DISTINCT Nazwa_Kategorii
 FROM   [HD].[dbo].[kategorie]
