@@ -1,5 +1,5 @@
 # Data-warehouse Project 
-Student project. Data-Warehouse for tv statistics. Created with ms-sql, ssis, ssas and ssrs and sql.
+Student project. Data-Warehouse for tv statistics. Created with ms-sql, ssis, ssas, ssrs and sql.
 
 ## Babkiewicz Artur
 
